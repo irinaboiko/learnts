@@ -1,4 +1,4 @@
-import { handleAction } from "redux-actions";
+//import { handleAction } from "redux-action-creators";
 import { userState, UserAction, UsersActionTypes } from "../types";
 
 const defaultState: userState = {
@@ -9,18 +9,18 @@ const defaultState: userState = {
 
 export const usersPage = (state = defaultState, action: UserAction) => {
   switch (action.type) {
-    case UsersActionTypes.FETCH_USERS_REQUEST:
+    case UsersActionTypes.GET_USERS_REQUEST:
       return {
         ...state,
         isLoading: true,
       };
-    case UsersActionTypes.FETCH_USERS_SUCCESS:
+    case UsersActionTypes.GET_USERS_SUCCESS:
       return {
         ...state,
         isLoading: false,
         users: action.payload,
       };
-    case UsersActionTypes.FETCH_USERS_FAIL:
+    case UsersActionTypes.GET_USERS_FAIL:
       return {
         ...state,
         isLoading: false,

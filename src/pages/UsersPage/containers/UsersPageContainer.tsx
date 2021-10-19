@@ -1,14 +1,31 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import UsersPageLayout from "../components/UsersPageLayout";
+import React, { useEffect } from "react";
+
+import { useActions, useTypedSelector } from "../../../hooks";
+import { getUsers } from "../action-creators";
 
 const UsersPageContainer: React.FC = () => {
-  const state = useSelector((state) => state);
-  console.log(state);
+  const { users, isLoading, error } = useTypedSelector(
+    (state) => state.usersPage
+  );
+  const { getUsers } = useActions();
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (error) {
+    return <h1>{error}</h1>;
+  }
 
   return (
     <div>
-      <UsersPageLayout />
+      {users.map((user) => {
+        return <div key={user.id}>{user.name}</div>;
+      })}
     </div>
   );
 };

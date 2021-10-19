@@ -5,26 +5,26 @@ export interface userState {
 }
 
 export enum UsersActionTypes {
-  FETCH_USERS_REQUEST = "FETCH_USERS_REQUEST",
-  FETCH_USERS_SUCCESS = "FETCH_USERS_SUCCESS",
-  FETCH_USERS_FAIL = "FETCH_USERS_FAIL",
+  GET_USERS_REQUEST = "GET_USERS_REQUEST",
+  GET_USERS_SUCCESS = "GET_USERS_SUCCESS",
+  GET_USERS_FAIL = "GET_USERS_FAIL",
 }
 
-interface FetchUsersRequestAction {
-  type: UsersActionTypes.FETCH_USERS_REQUEST;
+interface GetUsersRequestAction {
+  type: UsersActionTypes.GET_USERS_REQUEST;
 }
 
-interface FetchUsersSuccessAction {
-  type: UsersActionTypes.FETCH_USERS_SUCCESS;
+interface GetUsersSuccessAction {
+  type: UsersActionTypes.GET_USERS_SUCCESS;
   payload: any[];
 }
 
-interface FetchUsersFailAction {
-  type: UsersActionTypes.FETCH_USERS_FAIL;
+interface GetUsersFailAction {
+  type: UsersActionTypes.GET_USERS_FAIL;
   payload: string;
 }
 
 export type UserAction =
-  | FetchUsersRequestAction
-  | FetchUsersFailAction
-  | FetchUsersSuccessAction;
+  | GetUsersRequestAction
+  | GetUsersSuccessAction
+  | GetUsersFailAction;
